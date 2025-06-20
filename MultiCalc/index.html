@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MultiCalc - Multi-functional Calculator App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="app-title">MultiCalc</h1>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                <span class="theme-icon">🌓</span>
+            </button>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <nav class="nav-tabs">
+            <button class="tab-btn active" data-tab="standard">Standard</button>
+            <button class="tab-btn" data-tab="scientific">Scientific</button>
+            <button class="tab-btn" data-tab="percentage">Percentage</button>
+            <button class="tab-btn" data-tab="tip">Tip</button>
+            <button class="tab-btn" data-tab="unit">Unit</button>
+            <button class="tab-btn" data-tab="currency">Currency</button>
+            <button class="tab-btn" data-tab="date">Date</button>
+            <button class="tab-btn" data-tab="loan">Loan</button>
+            <button class="tab-btn" data-tab="gst">GST</button>
+        </nav>
+
+        <!-- Calculator Sections -->
+        <main class="main-content">
+            <!-- Standard Calculator -->
+            <section class="calculator-section active" id="standard">
+                <h2>Standard Calculator</h2>
+                <div class="calculator-container">
+                    <div class="display">
+                        <div class="expression-display" id="standardExpression"></div>
+                        <input type="text" id="standardDisplay" readonly value="0">
+                    </div>
+                    <div class="buttons-grid standard-grid">
+                        <button class="btn clear" onclick="standardCalculator.clear()">C</button>
+                        <button class="btn clear" onclick="standardCalculator.clearEntry()">CE</button>
+                        <button class="btn operation" onclick="standardCalculator.backspace()">⌫</button>
+                        <button class="btn operation" onclick="standardCalculator.inputOperation('/')">/</button>
+                        
+                        <button class="btn number" onclick="standardCalculator.inputNumber('7')">7</button>
+                        <button class="btn number" onclick="standardCalculator.inputNumber('8')">8</button>
+                        <button class="btn number" onclick="standardCalculator.inputNumber('9')">9</button>
+                        <button class="btn operation" onclick="standardCalculator.inputOperation('*')">×</button>
+                        
+                        <button class="btn number" onclick="standardCalculator.inputNumber('4')">4</button>
+                        <button class="btn number" onclick="standardCalculator.inputNumber('5')">5</button>
+                        <button class="btn number" onclick="standardCalculator.inputNumber('6')">6</button>
+                        <button class="btn operation" onclick="standardCalculator.inputOperation('-')">-</button>
+                        
+                        <button class="btn number" onclick="standardCalculator.inputNumber('1')">1</button>
+                        <button class="btn number" onclick="standardCalculator.inputNumber('2')">2</button>
+                        <button class="btn number" onclick="standardCalculator.inputNumber('3')">3</button>
+                        <button class="btn operation" onclick="standardCalculator.inputOperation('+')">+</button>
+                        
+                        <button class="btn number zero" onclick="standardCalculator.inputNumber('0')">0</button>
+                        <button class="btn number" onclick="standardCalculator.inputDecimal()">.</button>
+                        <button class="btn equals" onclick="standardCalculator.calculate()">=</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Scientific Calculator -->
+            <section class="calculator-section" id="scientific">
+                <h2>Scientific Calculator</h2>
+                <div class="calculator-container">
+                    <div class="display">
+                        <div class="expression-display" id="scientificExpression"></div>
+                        <input type="text" id="scientificDisplay" readonly value="0">
+                    </div>
+                    <div class="buttons-grid scientific-grid">
+                        <button class="btn clear" onclick="scientificCalculator.clear()">C</button>
+                        <button class="btn clear" onclick="scientificCalculator.clearEntry()">CE</button>
+                        <button class="btn operation" onclick="scientificCalculator.backspace()">⌫</button>
+                        <button class="btn operation" onclick="scientificCalculator.inputOperation('/')">/</button>
+                        <button class="btn function" onclick="scientificCalculator.inputFunction('sqrt')">√</button>
+                        
+                        <button class="btn function" onclick="scientificCalculator.inputFunction('sin')">sin</button>
+                        <button class="btn function" onclick="scientificCalculator.inputFunction('cos')">cos</button>
+                        <button class="btn function" onclick="scientificCalculator.inputFunction('tan')">tan</button>
+                        <button class="btn function" onclick="scientificCalculator.inputFunction('log')">log</button>
+                        <button class="btn function" onclick="scientificCalculator.inputFunction('ln')">ln</button>
+                        
+                        <button class="btn number" onclick="scientificCalculator.inputNumber('7')">7</button>
+                        <button class="btn number" onclick="scientificCalculator.inputNumber('8')">8</button>
+                        <button class="btn number" onclick="scientificCalculator.inputNumber('9')">9</button>
+                        <button class="btn operation" onclick="scientificCalculator.inputOperation('*')">×</button>
+                        <button class="btn function" onclick="scientificCalculator.inputFunction('pow')">x^y</button>
+                        
+                        <button class="btn number" onclick="scientificCalculator.inputNumber('4')">4</button>
+                        <button class="btn number" onclick="scientificCalculator.inputNumber('5')">5</button>
+                        <button class="btn number" onclick="scientificCalculator.inputNumber('6')">6</button>
+                        <button class="btn operation" onclick="scientificCalculator.inputOperation('-')">-</button>
+                        <button class="btn function" onclick="scientificCalculator.inputConstant('pi')">π</button>
+                        
+                        <button class="btn number" onclick="scientificCalculator.inputNumber('1')">1</button>
+                        <button class="btn number" onclick="scientificCalculator.inputNumber('2')">2</button>
+                        <button class="btn number" onclick="scientificCalculator.inputNumber('3')">3</button>
+                        <button class="btn operation" onclick="scientificCalculator.inputOperation('+')">+</button>
+                        <button class="btn function" onclick="scientificCalculator.inputConstant('e')">e</button>
+                        
+                        <button class="btn number zero" onclick="scientificCalculator.inputNumber('0')">0</button>
+                        <button class="btn number" onclick="scientificCalculator.inputDecimal()">.</button>
+                        <button class="btn equals" onclick="scientificCalculator.calculate()">=</button>
+                        <button class="btn function" onclick="scientificCalculator.inputFunction('factorial')">n!</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Percentage Calculator -->
+            <section class="calculator-section" id="percentage">
+                <h2>Percentage Calculator</h2>
+                <div class="calculator-container">
+                    <div class="percentage-forms">
+                        <div class="form-group">
+                            <h3>What is X% of Y?</h3>
+                            <div class="input-row">
+                                <input type="number" id="percentValue" placeholder="Percentage">
+                                <span>% of</span>
+                                <input type="number" id="baseValue" placeholder="Value">
+                                <button class="btn calculate" onclick="percentageCalculator.calculatePercentOf()">Calculate</button>
+                            </div>
+                            <div class="result" id="percentOfResult"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <h3>Percentage Increase/Decrease</h3>
+                            <div class="input-row">
+                                <input type="number" id="originalValue" placeholder="Original Value">
+                                <input type="number" id="newValue" placeholder="New Value">
+                                <button class="btn calculate" onclick="percentageCalculator.calculateChange()">Calculate</button>
+                            </div>
+                            <div class="result" id="percentChangeResult"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <h3>X is what % of Y?</h3>
+                            <div class="input-row">
+                                <input type="number" id="partValue" placeholder="Part">
+                                <span>is what % of</span>
+                                <input type="number" id="wholeValue" placeholder="Whole">
+                                <button class="btn calculate" onclick="percentageCalculator.calculateWhatPercent()">Calculate</button>
+                            </div>
+                            <div class="result" id="whatPercentResult"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tip Calculator -->
+            <section class="calculator-section" id="tip">
+                <h2>Tip Calculator</h2>
+                <div class="calculator-container">
+                    <div class="tip-form">
+                        <div class="form-group">
+                            <label for="billAmount">Bill Amount</label>
+                            <input type="number" id="billAmount" placeholder="0.00" step="0.01">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="tipPercentage">Tip Percentage</label>
+                            <input type="number" id="tipPercentage" placeholder="15" value="15">
+                            <div class="tip-presets">
+                                <button class="btn preset" onclick="tipCalculator.setTipPercent(10)">10%</button>
+                                <button class="btn preset" onclick="tipCalculator.setTipPercent(15)">15%</button>
+                                <button class="btn preset" onclick="tipCalculator.setTipPercent(18)">18%</button>
+                                <button class="btn preset" onclick="tipCalculator.setTipPercent(20)">20%</button>
+                                <button class="btn preset" onclick="tipCalculator.setTipPercent(25)">25%</button>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="numberOfPeople">Split Between</label>
+                            <input type="number" id="numberOfPeople" placeholder="1" value="1" min="1">
+                        </div>
+
+                        <button class="btn calculate" onclick="tipCalculator.calculate()">Calculate</button>
+
+                        <div class="tip-results" id="tipResults">
+                            <div class="result-item">
+                                <span>Tip Amount:</span>
+                                <span id="tipAmount">$0.00</span>
+                            </div>
+                            <div class="result-item">
+                                <span>Total Amount:</span>
+                                <span id="totalAmount">$0.00</span>
+                            </div>
+                            <div class="result-item">
+                                <span>Per Person:</span>
+                                <span id="perPersonAmount">$0.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Unit Converter -->
+            <section class="calculator-section" id="unit">
+                <h2>Unit Converter</h2>
+                <div class="calculator-container">
+                    <div class="converter-tabs">
+                        <button class="converter-tab active" data-type="length">Length</button>
+                        <button class="converter-tab" data-type="weight">Weight</button>
+                        <button class="converter-tab" data-type="volume">Volume</button>
+                        <button class="converter-tab" data-type="temperature">Temperature</button>
+                    </div>
+
+                    <div class="converter-content">
+                        <div class="converter-row">
+                            <div class="input-group">
+                                <input type="number" id="fromValue" placeholder="0">
+                                <select id="fromUnit"></select>
+                            </div>
+                            <button class="swap-btn" onclick="unitConverter.swap()">⇄</button>
+                            <div class="input-group">
+                                <input type="number" id="toValue" readonly>
+                                <select id="toUnit"></select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Currency Converter -->
+            <section class="calculator-section" id="currency">
+                <h2>Currency Converter</h2>
+                <div class="calculator-container">
+                    <div class="currency-form">
+                        <div class="converter-row">
+                            <div class="input-group">
+                                <input type="number" id="currencyFromValue" placeholder="0">
+                                <select id="currencyFrom"></select>
+                            </div>
+                            <button class="swap-btn" onclick="currencyConverter.swap()">⇄</button>
+                            <div class="input-group">
+                                <input type="number" id="currencyToValue" readonly>
+                                <select id="currencyTo"></select>
+                            </div>
+                        </div>
+
+                        <div class="exchange-rates">
+                            <h3>Update Exchange Rates</h3>
+                            <div id="ratesList"></div>
+                            <button class="btn" onclick="currencyConverter.showUpdateModal()">Update Rates</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Date Calculator -->
+            <section class="calculator-section" id="date">
+                <h2>Date Calculator</h2>
+                <div class="calculator-container">
+                    <div class="date-tabs">
+                        <button class="date-tab active" data-type="difference">Date Difference</button>
+                        <button class="date-tab" data-type="add">Add/Subtract Days</button>
+                    </div>
+
+                    <div class="date-content">
+                        <div class="date-section active" id="dateDifference">
+                            <h3>Calculate Difference Between Dates</h3>
+                            <div class="form-group">
+                                <label>From Date:</label>
+                                <input type="date" id="fromDate">
+                            </div>
+                            <div class="form-group">
+                                <label>To Date:</label>
+                                <input type="date" id="toDate">
+                            </div>
+                            <button class="btn calculate" onclick="dateCalculator.calculateDifference()">Calculate</button>
+                            <div class="result" id="dateDiffResult"></div>
+                        </div>
+
+                        <div class="date-section" id="dateAddSubtract">
+                            <h3>Add/Subtract Days from Date</h3>
+                            <div class="form-group">
+                                <label>Start Date:</label>
+                                <input type="date" id="startDate">
+                            </div>
+                            <div class="form-group">
+                                <label>Days to Add/Subtract:</label>
+                                <input type="number" id="daysToAdd" placeholder="0">
+                            </div>
+                            <button class="btn calculate" onclick="dateCalculator.addSubtractDays()">Calculate</button>
+                            <div class="result" id="dateAddResult"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Loan Calculator -->
+            <section class="calculator-section" id="loan">
+                <h2>Loan Calculator</h2>
+                <div class="calculator-container">
+                    <div class="loan-form">
+                        <div class="form-group">
+                            <label for="loanAmount">Loan Amount</label>
+                            <input type="number" id="loanAmount" placeholder="0">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="interestRate">Annual Interest Rate (%)</label>
+                            <input type="number" id="interestRate" placeholder="0" step="0.01">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="loanTerm">Loan Term (years)</label>
+                            <input type="number" id="loanTerm" placeholder="0">
+                        </div>
+
+                        <button class="btn calculate" onclick="loanCalculator.calculate()">Calculate</button>
+
+                        <div class="loan-results" id="loanResults">
+                            <div class="result-item">
+                                <span>Monthly Payment:</span>
+                                <span id="monthlyPayment">$0.00</span>
+                            </div>
+                            <div class="result-item">
+                                <span>Total Interest:</span>
+                                <span id="totalInterest">$0.00</span>
+                            </div>
+                            <div class="result-item">
+                                <span>Total Amount:</span>
+                                <span id="totalLoanAmount">$0.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- GST Calculator -->
+            <section class="calculator-section" id="gst">
+                <h2>Indian GST Calculator</h2>
+                <div class="calculator-container">
+                    <div class="gst-tabs">
+                        <button class="gst-tab active" data-type="add">Add GST</button>
+                        <button class="gst-tab" data-type="remove">Remove GST</button>
+                    </div>
+
+                    <div class="gst-content">
+                        <div class="gst-section active" id="addGST">
+                            <h3>Calculate GST Amount</h3>
+                            <div class="form-group">
+                                <label for="baseAmount">Base Amount (₹)</label>
+                                <input type="number" id="baseAmount" placeholder="0" step="0.01">
+                            </div>
+                            <div class="form-group">
+                                <label for="gstRate">GST Rate (%)</label>
+                                <select id="gstRate">
+                                    <option value="0">0%</option>
+                                    <option value="5">5%</option>
+                                    <option value="12">12%</option>
+                                    <option value="18" selected>18%</option>
+                                    <option value="28">28%</option>
+                                </select>
+                            </div>
+                            <button class="btn calculate" onclick="gstCalculator.addGST()">Calculate</button>
+                            <div class="gst-results" id="addGSTResults">
+                                <div class="result-item">
+                                    <span>CGST (₹):</span>
+                                    <span id="cgstAmount">₹0.00</span>
+                                </div>
+                                <div class="result-item">
+                                    <span>SGST (₹):</span>
+                                    <span id="sgstAmount">₹0.00</span>
+                                </div>
+                                <div class="result-item">
+                                    <span>Total GST (₹):</span>
+                                    <span id="totalGSTAmount">₹0.00</span>
+                                </div>
+                                <div class="result-item">
+                                    <span>Total Amount (₹):</span>
+                                    <span id="totalWithGST">₹0.00</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="gst-section" id="removeGST">
+                            <h3>Remove GST from Amount</h3>
+                            <div class="form-group">
+                                <label for="totalAmountWithGST">Total Amount (with GST) (₹)</label>
+                                <input type="number" id="totalAmountWithGST" placeholder="0" step="0.01">
+                            </div>
+                            <div class="form-group">
+                                <label for="gstRateRemove">GST Rate (%)</label>
+                                <select id="gstRateRemove">
+                                    <option value="0">0%</option>
+                                    <option value="5">5%</option>
+                                    <option value="12">12%</option>
+                                    <option value="18" selected>18%</option>
+                                    <option value="28">28%</option>
+                                </select>
+                            </div>
+                            <button class="btn calculate" onclick="gstCalculator.removeGST()">Calculate</button>
+                            <div class="gst-results" id="removeGSTResults">
+                                <div class="result-item">
+                                    <span>Base Amount (₹):</span>
+                                    <span id="baseAmountResult">₹0.00</span>
+                                </div>
+                                <div class="result-item">
+                                    <span>GST Amount (₹):</span>
+                                    <span id="gstAmountResult">₹0.00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Modal for currency rate updates -->
+        <div class="modal" id="rateModal">
+            <div class="modal-content">
+                <h3>Update Exchange Rates</h3>
+                <div id="rateInputs"></div>
+                <div class="modal-buttons">
+                    <button class="btn" onclick="currencyConverter.saveRates()">Save</button>
+                    <button class="btn" onclick="currencyConverter.hideUpdateModal()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="calculators/standard.js"></script>
+    <script src="calculators/scientific.js"></script>
+    <script src="calculators/percentage.js"></script>
+    <script src="calculators/tip.js"></script>
+    <script src="calculators/unit-converter.js"></script>
+    <script src="calculators/currency.js"></script>
+    <script src="calculators/date.js"></script>
+    <script src="calculators/loan.js"></script>
+    <script src="calculators/gst.js"></script>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyAMka1KkvCVZDsUwZacJG0GSLP7Ku_kJy4",
+            authDomain: "vebuin-ai-multicalculator.firebaseapp.com",
+            projectId: "vebuin-ai-multicalculator",
+            storageBucket: "vebuin-ai-multicalculator.firebasestorage.app",
+            messagingSenderId: "964511960258",
+            appId: "1:964511960258:web:aa20e6f1f0062ccbc8bf5b",
+            measurementId: "G-JD7VZDHMCL"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+    </script>
+</body>
+</html>
